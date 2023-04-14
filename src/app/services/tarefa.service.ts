@@ -11,21 +11,25 @@ export class TarefaService {
 	constructor(private storage: Storage) {
 	}
 
-	public adicionar(novaTarefa: Tarefa) {
-		this.storage.set(novaTarefa.id, novaTarefa)
+	public async adicionar(novaTarefa: Tarefa) {
+		await this.storage.set(novaTarefa.id, novaTarefa)
 	}
 
-	public deletar(id: string) {
-		this.storage.remove(id)
+	public async deletar(id: string) {
+		await this.storage.remove(id)
 	}
 
-	public editar(tarefa: Tarefa) {
-		this.storage.set(tarefa.id, tarefa)
+	public async editar(tarefa: Tarefa) {
+		await this.storage.set(tarefa.id, tarefa)
 	}
 
-	public carregar(): Array<Tarefa> {
+	public async buscar(id: string) {
+		await this.storage.get(id);
+	}
+
+	public async carregar(): Promise<Tarefa[]> {
 		let tarefas: Array<Tarefa> = [];
-		this.storage.forEach((tarefa, id, indice) => {
+		await this.storage.forEach((tarefa, id, indice) => {
 			tarefas.push({
 				...tarefa
 			})
