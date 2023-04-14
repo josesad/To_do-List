@@ -1,0 +1,7 @@
+{
+  "name": "tarefas-jose-guilherme",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
