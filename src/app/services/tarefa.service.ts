@@ -9,6 +9,7 @@ import { Tarefa } from '../models/tarefa.model';
 export class TarefaService {
 
 	constructor(private storage: Storage) {
+		this.storage.create();
 	}
 
 	public async adicionar(novaTarefa: Tarefa) {

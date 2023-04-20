@@ -61,17 +61,25 @@ export class HomePage {
       }
     })
 
+    
     modal.onDidDismiss().then(()=>{
       this.listar();
     });
-
+    
     return await modal.present();
   }
-
+  
+  public async editar(tarefa:Tarefa){
+    const modal = await this.modalCtrl.create({
+      component: TarefaAtualizaPage,
+      componentProps: {
+        minhaTarefa: tarefa
+      }
+    })
+  }
+  
   public prioridadeCor(prioridade: string) {
     const cor: string =prioridade === 'alto' ? 'danger' : (prioridade === 'baixo' ? 'success' : 'warning');
-    
-    console.log(cor);
 
     return cor;
   }
